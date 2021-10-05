@@ -89,9 +89,6 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   LENDA->Add(h_e_LENDA_ave);
   TH2D *h_eb_LENDA = new TH2D("h_eb_LENDA","Average Energy vs LENDA bar",4000,0,200000,21,0,21);
   LENDA->Add(h_eb_LENDA);
-  //TH2D *h_t_LENDA = new TH2D("h_t_LENDA","LENDA time",20000,0,20000000,20000,0,20000000);
-  //LENDA->Add(h_t_LENDA);
-  //TH2D *h_t_LENDA_diff = new TH2D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,0,20000000,2000,0,20000000);
   TH1D *h_t_LENDA_diff = new TH1D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,-2000,2000);
   LENDA->Add(h_t_LENDA_diff);
 
@@ -138,6 +135,11 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_Si->Add(h_t_MCP_Si);
   TH2D *h_et_MCP_Si = new TH2D("h_et_MCP_Si","time difference between MCPs and Si vs Si energy",4000,0,200000,250,0,1000);
   MCP_Si->Add(h_et_MCP_Si);
+
+  // LENDA - Si conincidence histograms
+  TList *LENDA_Si = new TList();
+  TH2D *h_et_LENDA_Si = new TH2D("h_et_LENDA_Si","time difference between MCPs and Si vs Si energy",4000,0,200000,2500,0,10000);
+  LENDA_Si->Add(h_et_LENDA_Si);
 
   // MCP - IC - Si coincidence histograms
   TList *MCP_IC_Si = new TList();
@@ -249,7 +251,6 @@ void secarAnalysis::Loop(TString fileOutName, int run)
       }
     }
 
-
 //=============LENDA histograms===============//
   if(mult_LENDA>1 && mult_LENDA<42){
   	if(LENDAHit.pmt_T.size()>0){
@@ -327,9 +328,14 @@ void secarAnalysis::Loop(TString fileOutName, int run)
             h_et_MCP_Si->Fill(SiHit.energyCal_Good[i], SiHit.time_Good[i]-mcpHit.time[j]);
           }
         }
+  //==========Si LENDA coincidence==========//
+        if(LENDAHit.barGood.size()>0){
+          for(int j=0; j<LENDAHit.barGood.size(); j++){
+            h_et_LENDA_Si->Fill(LENDAHit.energyCal_Good[i], SiHit.time_Good[i]-LENDAHit.timeGood[j]);
+          }
+        }
       }
     }
-
   }
   TFile *fout = new TFile(fileOutName,"recreate");
 
