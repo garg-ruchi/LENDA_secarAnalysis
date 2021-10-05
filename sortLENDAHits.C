@@ -31,7 +31,7 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
           if(LENDAHit.pmt_T[i]==LENDAHit.pmt_B[j]){
             LENDAHit.barGood.push_back(LENDAHit.pmt_T[i]);
             LENDAHit.energyGood.push_back((LENDAHit.energy_T[i]+LENDAHit.energy_B[j])/2);
-            LENDAHit.timeGood.push_back(min(LENDAHit.time_T[i],LENDAHit.time_B[j]);
+            LENDAHit.timeGood.push_back(min(LENDAHit.time_T[i],LENDAHit.time_B[j]));
           }
         }
       }
