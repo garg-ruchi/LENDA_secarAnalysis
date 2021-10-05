@@ -92,7 +92,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   //TH2D *h_t_LENDA = new TH2D("h_t_LENDA","LENDA time",20000,0,20000000,20000,0,20000000);
   //LENDA->Add(h_t_LENDA);
   //TH2D *h_t_LENDA_diff = new TH2D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,0,20000000,2000,0,20000000);
-  TH1D *h_t_LENDA_diff = new TH1D("h_t_LENDA_diff","LENDA time Top vd Bottom",20000,-2e11,2e11);
+  TH1D *h_t_LENDA_diff = new TH1D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,-2000,2000);
   LENDA->Add(h_t_LENDA_diff);
 
   // IC histograms
