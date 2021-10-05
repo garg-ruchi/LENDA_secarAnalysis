@@ -331,7 +331,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   //==========Si LENDA coincidence==========//
         if(LENDAHit.barGood.size()>0){
           for(int j=0; j<LENDAHit.barGood.size(); j++){
-            h_et_LENDA_Si->Fill(LENDAHit.energyCal_Good[i], SiHit.time_Good[i]-LENDAHit.timeGood[j]);
+            h_et_LENDA_Si->Fill(SiHit.energyCal_Good[i], SiHit.time_Good[i]-LENDAHit.timeGood[j]);
           }
         }
       }
