@@ -73,22 +73,22 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 
   // LENDA histograms
   TList *LENDA = new TList(); // Add every new histogram to this list!!!
-  TH1D *h_m_LENDA_T = new TH1D("h_m_LENDA_T","LENDA top multiplicity",32,0,32);
+  TH1D *h_m_LENDA_T = new TH1D("h_m_LENDA_T","LENDA top multiplicity",21,0,21);
   LENDA->Add(h_m_LENDA_T);
   TH1D *h_e_LENDA_T = new TH1D("h_e_LENDA_T","Energy LENDA top pmt",4000,0,200000);
   LENDA->Add(h_e_LENDA_T);
   TH1D *h_t_LENDA_T = new TH1D("h_t_LENDA_T","Timing LENDA top pmt",4000,0,2E11);
   LENDA->Add(h_t_LENDA_T);
-  TH1D *h_m_LENDA_B = new TH1D("h_m_LENDA_B","LENDA bottom multiplicity",32,0,32);
+  TH1D *h_m_LENDA_B = new TH1D("h_m_LENDA_B","LENDA bottom multiplicity",21,0,21);
   LENDA->Add(h_m_LENDA_B);
   TH1D *h_e_LENDA_B = new TH1D("h_e_LENDA_B","Energy LENDA bottom",4000,0,200000);
   LENDA->Add(h_e_LENDA_B);
   TH1D *h_t_LENDA_B = new TH1D("h_t_LENDA_B","Timing LENDA bottom pmt",4000,0,2E11);
   LENDA->Add(h_t_LENDA_B);
-  TH1D *h_e_LENDA_ave = new TH1D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
+  TH1D *h_e_LENDA_ave = new TH1D("h_e_LENDA_ave","Average Energy LENDA bar",4000,0,200000);
   LENDA->Add(h_e_LENDA_ave);
-  // TH2D *h_e_LENDA_ave = new TH2D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
-  // LENDA->Add(h_e_LENDA_ave);
+  TH2D *h_eb_LENDA = new TH2D("h_eb_LENDA","Average Energy vs LENDA bar",4000,0,200000,21,0,21);
+  LENDA->Add(h_eb_LENDA);
   //TH2D *h_t_LENDA = new TH2D("h_t_LENDA","LENDA time",20000,0,20000000,20000,0,20000000);
   //LENDA->Add(h_t_LENDA);
   TH2D *h_t_LENDA_diff = new TH2D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,0,20000000,2000,0,20000000);
@@ -250,7 +250,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 
 
 //=============LENDA histograms===============//
-  if(mult_LENDA>0 && mult_LENDA<42){
+  if(mult_LENDA>1 && mult_LENDA<42){
   	if(LENDAHit.pmt_T.size()>0){
   		for(int i=0; i<LENDAHit.pmt_T.size(); i++){
         h_e_LENDA_T->Fill(LENDAHit.energy_T[i]);
@@ -314,7 +314,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
                 h_t_MCP_Si3->Fill(SiHit.time_Good[i]-mcpHit.time[k]);
                 h_pid_MCP->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
                 h_ICdE_SiMCPtime->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
-		if(SiHit.energyCal_Good[i]>blob1a_Si[0]) h_ICdE_SiMCPtime_SiEGate->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
+		            if(SiHit.energyCal_Good[i]>blob1a_Si[0]) h_ICdE_SiMCPtime_SiEGate->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
               }
             }
           }

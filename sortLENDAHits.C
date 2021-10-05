@@ -12,7 +12,7 @@ struct lendaDTO{
 //chan_LENDA comes from the createEvent and ranges from 0 to 41 ???
 lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *chan_LENDA, vector<double> *time_LENDA, int side_LENDA[42], int bar_LENDA[42]){
   lendaDTO LENDAHit;
-  if(mult_LENDA>0 && mult_LENDA<42){
+  if(mult_LENDA>1 && mult_LENDA<42){
     for(int i=0; i<mult_LENDA; i++){
       if(side_LENDA[(*chan_LENDA)[i]]==0){
         LENDAHit.energy_T.push_back((*energy_LENDA)[i]);
@@ -28,10 +28,10 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
     if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_B.size()>0){
       for(int i=0; i<LENDAHit.pmt_T.size(); i++){
         for(int j=0; j<LENDAHit.pmt_B.size(); j++){
-          if(LENDAHit.pmt_T[i]==LENDAHit.pmt_B[j]){
+          if(LENDAHit.pmt_T[i]==LENDAHit.pmt_B[j] && abs(LENDAHit.time_T[i]-LENDAHit.time_B[j])<10){
             LENDAHit.barGood.push_back(LENDAHit.pmt_T[i]);
-            LENDAHit.energyGood.push_back((LENDAHit.energy_T[i]+LENDAHit.energy_B[j])/2);
-            LENDAHit.timeGood.push_back(min(LENDAHit.time_T[i],LENDAHit.time_B[j]));
+            LENDAHit.energyGood.push_back(sqrt(LENDAHit.energy_T[i]*LENDAHit.energy_B[j]));
+            LENDAHit.timeGood.push_back((LENDAHit.time_T[i]+LENDAHit.time_B[j])/2);
           }
         }
       }
