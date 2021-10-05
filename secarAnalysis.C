@@ -87,8 +87,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   LENDA->Add(h_t_LENDA_B);
   TH1D *h_e_LENDA_ave = new TH1D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
   LENDA->Add(h_ec_LENDA_ave);
-  TH2D *h_e_LENDA_ave = new TH2D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
-  LENDA->Add(h_e_LENDA_ave);
+  // TH2D *h_e_LENDA_ave = new TH2D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
+  // LENDA->Add(h_e_LENDA_ave);
   //TH2D *h_t_LENDA = new TH2D("h_t_LENDA","LENDA time",20000,0,20000000,20000,0,20000000);
   //LENDA->Add(h_t_LENDA);
   TH2D *h_t_LENDA_diff = new TH2D("h_t_LENDA_diff","LENDA time Top vd Bottom",2000,0,20000000,2000,0,20000000);
