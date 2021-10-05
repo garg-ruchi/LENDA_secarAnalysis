@@ -264,7 +264,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
   			if(LENDAHit.pmt_T.size()>0){
   				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
-            if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i]) h_t_LENDA_diff->Fill(LENDAHit.time_T[j],LENDAHit.time_B[i]);
+            if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i]) h_t_LENDA_diff->Fill(LENDAHit.time_T[j]-LENDAHit.time_B[i]);
   				}
   			}
   		}
