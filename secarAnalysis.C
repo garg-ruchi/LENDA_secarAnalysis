@@ -86,6 +86,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   TH1D *h_t_LENDA_B = new TH1D("h_t_LENDA_B","Timing LENDA bottom pmt",4000,0,2E11);
   LENDA->Add(h_t_LENDA_B);
   TH1D *h_e_LENDA_ave = new TH1D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
+  LENDA->Add(h_ec_LENDA_ave);
+  TH2D *h_e_LENDA_ave = new TH2D("h_e_LENDA_ave","Average Energy LENDA bar",200,-1000,1000);
   LENDA->Add(h_e_LENDA_ave);
   //TH2D *h_t_LENDA = new TH2D("h_t_LENDA","LENDA time",20000,0,20000000,20000,0,20000000);
   //LENDA->Add(h_t_LENDA);
@@ -261,14 +263,14 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
   			if(LENDAHit.pmt_T.size()>0){
   				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
-            if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i]){
-              h_e_LENDA_ave->Fill((LENDAHit.energy_T[j]+LENDAHit.energy_B[i])/2);
-            	h_t_LENDA_diff->Fill(LENDAHit.time_T[j],LENDAHit.time_B[i]);
-            }
+            if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i]) h_t_LENDA_diff->Fill(LENDAHit.time_T[j],LENDAHit.time_B[i]);
   				}
   			}
   		}
   	}
+    for(int i=0; i<LENDAHit.energyGood.size(); i++){
+      h_e_LENDA_ave->Fill(LENDAHit.energyGood[i]);
+    }
   }
 
 //=============IC histograms===============//

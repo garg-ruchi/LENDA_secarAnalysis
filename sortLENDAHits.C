@@ -4,6 +4,9 @@ struct lendaDTO{
   vector<double> energy_T, energy_B;
   vector<int> pmt_T, pmt_B;
   vector<double> time_T, time_B;
+  vector<int> barGood;
+  vector<double> energyGood;
+  vector<int> timeGood;
 };
 
 //chan_LENDA comes from the createEvent and ranges from 0 to 41 ???
@@ -20,6 +23,17 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
         LENDAHit.energy_B.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_B.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_B.push_back((*time_LENDA)[i]);
+      }
+    }
+    if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_B.size()>0){
+      for(int i=0; i<LENDAHit.pmt_T.size(); i++){
+        for(int j=0; j<LENDAHit.pmt_B.size(); j++){
+          if(LENDAHit.pmt_T[i]==LENDAHit.pmt_B[j]){
+            LENDAHit.barGood.push_back(LENDAHit.pmt_T[i]);
+            LENDAHit.energyGood.push_back((LENDAHit.energy_T[i]+LENDAHit.energy_B[j])/2);
+            LENDAHit.timeGood.push_back(min(LENDAHit.time_T[i],LENDAHit.time_B[j]);
+          }
+        }
       }
     }
   }
