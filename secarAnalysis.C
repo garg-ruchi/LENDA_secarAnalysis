@@ -248,31 +248,27 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 
 
 //=============LENDA histograms===============//
+  if(mult_LENDA>0 && mult_LENDA<42){
+  	if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_T.size()<42){
+  		for(int i=0; i<LENDAHit.pmt_T.size(); i++){
+        h_e_LENDA_T->Fill(LENDAHit.energy_T[i]);
+        h_t_LENDA_T->Fill(LENDAHit.time_T[i]);
+  		}
+  	}
+  	if(LENDAHit.pmt_B.size()>0 && LENDAHit.pmt_B.size()<42){
+  		for(int i=0; i<LENDAHit.pmt_B.size(); i++){
+        h_e_LENDA_B->Fill(LENDAHit.energy_B[i]);
+        h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
 
-
-    if(mult_LENDA>0 && mult_LENDA<42){
-	if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_T.size()<42){
-		for(int i=0; i<LENDAHit.pmt_T.size(); i++){
-        		h_e_LENDA_T->Fill(LENDAHit.energy_T[i]);
-        		h_t_LENDA_T->Fill(LENDAHit.time_T[i]);
-			//h_e_LENDA_ave->Fill(LENDAHit.energy_T[i]/2.);
-		}
-	}
-	if(LENDAHit.pmt_B.size()>0 && LENDAHit.pmt_B.size()<42){
-		for(int i=0; i<LENDAHit.pmt_B.size(); i++){
-        		h_e_LENDA_B->Fill(LENDAHit.energy_B[i]);
-        		h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
-
-			if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_T.size()<42){
-				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
-                                      	h_e_LENDA_ave->Fill((LENDAHit.energy_T[j]+LENDAHit.energy_B[i])/2);
-        				h_t_LENDA_diff->Fill(LENDAHit.time_T[j],LENDAHit.time_B[i]);
-				}
-			}
-		}
-	}
-    }
-
+  			if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_T.size()<42){
+  				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
+            h_e_LENDA_ave->Fill((LENDAHit.energy_T[j]+LENDAHit.energy_B[i])/2);
+          	h_t_LENDA_diff->Fill(LENDAHit.time_T[j],LENDAHit.time_B[i]);
+  				}
+  			}
+  		}
+  	}
+  }
 
 //=============IC histograms===============//
     if(mult_IC_dE>0 && mult_IC_dE<28){
