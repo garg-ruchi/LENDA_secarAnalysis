@@ -7,7 +7,7 @@
 void secarAnalysis::Loop(TString fileOutName, int run)
 {
 //=====================================================================//
-//=================== Energy Calibration Parameters ===================//
+//=================== Energy Calibration Parameters ====test===============//
 //=====================================================================//
   int Si_side[72];
   int Si_strip[72];
@@ -214,7 +214,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
     icHit = sortICHits(mult_IC_dE, energy_IC_dE, time_IC_dE, IC_dE_gain, IC_dE_offset);
     SiHit = sortSiHits(mult_Si, energy_Si, chan_Si, time_Si, Si_side, Si_strip, Si_gain, Si_offset, 2500);
     LENDAHit = sortLENDAHits(mult_LENDA, energy_LENDA, chan_LENDA, time_LENDA, side_LENDA, bar_LENDA);
-  
+
 //=========Multiplicity histograms=========//
     h_m_SiF->Fill(SiHit.strip_F.size());
     h_m_SiB->Fill(SiHit.strip_B.size());
