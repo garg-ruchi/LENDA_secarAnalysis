@@ -7,7 +7,7 @@
 void secarAnalysis::Loop(TString fileOutName, int run)
 {
 //=====================================================================//
-//=================== Energy Calibration Parameters ====test===============//
+//=================== Energy Calibration Parameters ===================//
 //=====================================================================//
   int Si_side[72];
   int Si_strip[72];
