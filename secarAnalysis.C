@@ -98,7 +98,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   IC->Add(h_m_IC_dE);
   TH1D *h_e_IC_dE = new TH1D("h_e_IC_dE","calibrated IC dE",4000,0,200000);
   IC->Add(h_e_IC_dE);
-  TH2D *h_em_IC_dE = new TH2D("h_em_IC_dE","multiplicity vs calibrated IC dE",4000,0,200000);
+  TH2D *h_em_IC_dE = new TH2D("h_em_IC_dE","multiplicity vs calibrated IC dE",4000,0,200000,10,0,10);
   IC->Add(h_em_IC_dE);
 
   // MCP histograms
