@@ -283,30 +283,30 @@ void secarAnalysis::Loop(TString fileOutName, int run)
     }
 
 //==========coincidence histograms==========//
-    if(SiHit.energyCal_Good.size()>0){
-      for(int i=0; i<SiHit.energyCal_Good.size(); i++){
+    if(SiHit.energyCal_F.size()>0){
+      for(int i=0; i<SiHit.energyCal_F.size(); i++){
         if(icHit.energyCal.size()>0){
   //==========Si IC coincidence==========//
-          h_e_Si_coin_dE->Fill(SiHit.energyCal_Good[i]);
+          h_e_Si_coin_dE->Fill(SiHit.energyCal_F[i]);
           for(int j=0; j<icHit.energyCal.size(); j++){
-            h_pid->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
-            if(SiHit.strip_GoodF[i]>5 && SiHit.strip_GoodF[i]<26 && SiHit.strip_GoodB[i]>5 && SiHit.strip_GoodB[i]<26){
-              h_pid_cen->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
-              h_pid_corr->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
+            h_pid->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
+            if(SiHit.strip_F[i]>5 && SiHit.strip_F[i]<26 && SiHit.strip_B[i]>5 && SiHit.strip_B[i]<26){
+              h_pid_cen->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
+              h_pid_corr->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
             }
             else{
-              h_pid_edg->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
-              h_pid_edg_corr->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]/0.82);
-              h_pid_corr->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]/0.82);
+              h_pid_edg->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
+              h_pid_edg_corr->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]/0.82);
+              h_pid_corr->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]/0.82);
             }
 
-            pid_blob1a = SiHit.energyCal_Good[i] > blob1a_Si[0] && SiHit.energyCal_Good[i] < blob1a_Si[1] && icHit.energyCal[j] > blob1a_dE[0] && icHit.energyCal[j] < blob1a_dE[1];
-            pid_blob1b = SiHit.energyCal_Good[i] > blob1b_Si[0] && SiHit.energyCal_Good[i] < blob1b_Si[1] && icHit.energyCal[j] > blob1b_dE[0] && icHit.energyCal[j] < blob1b_dE[1];
-            pid_blob2 = SiHit.energyCal_Good[i] > blob2_Si[0] && SiHit.energyCal_Good[i] < blob2_Si[1] && icHit.energyCal[j] > blob2_dE[0] && icHit.energyCal[j] < blob2_dE[1];
+            pid_blob1a = SiHit.energyCal_F[i] > blob1a_Si[0] && SiHit.energyCal_F[i] < blob1a_Si[1] && icHit.energyCal[j] > blob1a_dE[0] && icHit.energyCal[j] < blob1a_dE[1];
+            pid_blob1b = SiHit.energyCal_F[i] > blob1b_Si[0] && SiHit.energyCal_F[i] < blob1b_Si[1] && icHit.energyCal[j] > blob1b_dE[0] && icHit.energyCal[j] < blob1b_dE[1];
+            pid_blob2 = SiHit.energyCal_F[i] > blob2_Si[0] && SiHit.energyCal_F[i] < blob2_Si[1] && icHit.energyCal[j] > blob2_dE[0] && icHit.energyCal[j] < blob2_dE[1];
 
-            if(pid_blob1a) h_Si_hit1a->Fill(SiHit.strip_GoodF[i],SiHit.strip_GoodB[j]);
-            else if(pid_blob1b) h_Si_hit1b->Fill(SiHit.strip_GoodF[i],SiHit.strip_GoodB[j]);
-            else if(pid_blob2) h_Si_hit2->Fill(SiHit.strip_GoodF[i],SiHit.strip_GoodB[j]);
+            if(pid_blob1a) h_Si_hit1a->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
+            else if(pid_blob1b) h_Si_hit1b->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
+            else if(pid_blob2) h_Si_hit2->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
 
     //==========Si IC MCP coincidence==========//
             if(mcpHit.time.size()>0){
@@ -314,9 +314,9 @@ void secarAnalysis::Loop(TString fileOutName, int run)
                 if(pid_blob1a || pid_blob1b) h_t_MCP_Si1->Fill(SiHit.time_Good[i]-mcpHit.time[k]);
                 else if(pid_blob2) h_t_MCP_Si2->Fill(SiHit.time_Good[i]-mcpHit.time[k]);
                 h_t_MCP_Si3->Fill(SiHit.time_Good[i]-mcpHit.time[k]);
-                h_pid_MCP->Fill(SiHit.energyCal_Good[i],icHit.energyCal[j]);
+                h_pid_MCP->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
                 h_ICdE_SiMCPtime->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
-		            if(SiHit.energyCal_Good[i]>blob1a_Si[0]) h_ICdE_SiMCPtime_SiEGate->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
+		            if(SiHit.energyCal_F[i]>blob1a_Si[0]) h_ICdE_SiMCPtime_SiEGate->Fill(icHit.energyCal[j],SiHit.time_Good[i]-mcpHit.time[k]);
               }
             }
           }
@@ -325,13 +325,13 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         if(mcpHit.time.size()>0){
           for(int j=0; j<mcpHit.time.size(); j++){
             h_t_MCP_Si->Fill(SiHit.time_Good[i]-mcpHit.time[j]);
-            h_et_MCP_Si->Fill(SiHit.energyCal_Good[i], SiHit.time_Good[i]-mcpHit.time[j]);
+            h_et_MCP_Si->Fill(SiHit.energyCal_F[i], SiHit.time_Good[i]-mcpHit.time[j]);
           }
         }
   //==========Si LENDA coincidence==========//
         if(LENDAHit.barGood.size()>0){
           for(int j=0; j<LENDAHit.barGood.size(); j++){
-            h_et_LENDA_Si->Fill(SiHit.energyCal_Good[i], SiHit.time_Good[i]-LENDAHit.timeGood[j]);
+            h_et_LENDA_Si->Fill(SiHit.energyCal_F[i], SiHit.time_Good[i]-LENDAHit.timeGood[j]);
           }
         }
       }
