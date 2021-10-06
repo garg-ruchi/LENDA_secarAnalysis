@@ -287,7 +287,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
       for(int i=0; i<SiHit.energyCal_F.size(); i++){
         if(icHit.energyCal.size()>0){
   //==========Si IC coincidence==========//
-          h_e_Si_coin_dE->Fill(SiHit.energyCal_F[i]);
+          if(icHit.energyCal[j]>10000) h_e_Si_coin_dE->Fill(SiHit.energyCal_F[i]);
           for(int j=0; j<icHit.energyCal.size(); j++){
             h_pid->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
             if(SiHit.strip_F[i]>5 && SiHit.strip_F[i]<26){
