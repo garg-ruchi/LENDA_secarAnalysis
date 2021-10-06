@@ -98,6 +98,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   IC->Add(h_m_IC_dE);
   TH1D *h_e_IC_dE = new TH1D("h_e_IC_dE","calibrated IC dE",4000,0,200000);
   IC->Add(h_e_IC_dE);
+  TH2D *h_em_IC_dE = new TH2D("h_em_IC_dE","multiplicity vs calibrated IC dE",4000,0,200000);
+  IC->Add(h_em_IC_dE);
 
   // MCP histograms
   TList *MCP = new TList();
@@ -278,7 +280,10 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 //=============IC histograms===============//
     if(mult_IC_dE>0 && mult_IC_dE<28){
       for(int i=0; i<mult_IC_dE; i++){
-        if(icHit.energyCal[i]>0) h_e_IC_dE->Fill(icHit.energyCal[i]);
+        if(icHit.energyCal[i]>0){
+          h_e_IC_dE->Fill(icHit.energyCal[i]);
+          h_em_IC_dE->Fill(icHit.energyCal[i],mult_IC_dE);
+        }
       }
     }
 
