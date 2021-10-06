@@ -304,9 +304,13 @@ void secarAnalysis::Loop(TString fileOutName, int run)
             pid_blob1b = SiHit.energyCal_F[i] > blob1b_Si[0] && SiHit.energyCal_F[i] < blob1b_Si[1] && icHit.energyCal[j] > blob1b_dE[0] && icHit.energyCal[j] < blob1b_dE[1];
             pid_blob2 = SiHit.energyCal_F[i] > blob2_Si[0] && SiHit.energyCal_F[i] < blob2_Si[1] && icHit.energyCal[j] > blob2_dE[0] && icHit.energyCal[j] < blob2_dE[1];
 
-            // if(pid_blob1a) h_Si_hit1a->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
-            // else if(pid_blob1b) h_Si_hit1b->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
-            // else if(pid_blob2) h_Si_hit2->Fill(SiHit.strip_F[i],SiHit.strip_B[j]);
+            if(SiHit.energyCal_B.size()>0){
+              for(int k=0; k<SiHit.energyCal_B.size(); k++){
+                if(pid_blob1a) h_Si_hit1a->Fill(SiHit.strip_F[i],SiHit.strip_B[k]);
+                else if(pid_blob1b) h_Si_hit1b->Fill(SiHit.strip_F[i],SiHit.strip_B[k]);
+                else if(pid_blob2) h_Si_hit2->Fill(SiHit.strip_F[i],SiHit.strip_B[k]);
+              }
+            }
 
     //==========Si IC MCP coincidence==========//
             if(mcpHit.time.size()>0){
