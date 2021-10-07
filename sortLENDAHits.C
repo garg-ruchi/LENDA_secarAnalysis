@@ -11,29 +11,23 @@ struct lendaDTO{
 
 //chan_LENDA comes from the createEvent and ranges from 0 to 41 ???
 lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *chan_LENDA, vector<double> *time_LENDA, int side_LENDA[42], int bar_LENDA[42]){
-  cout << "In" << endl;
   lendaDTO LENDAHit;
-  cout << __LINE__ << endl;
   if(mult_LENDA>1 && mult_LENDA<42){
     cout << "here" << endl;
-    cout << mult_LENDA << endl;
     cout << (*energy_LENDA)[0] << endl;
     cout << __LINE__ << endl;
     for(int i=0; i<mult_LENDA; i++){
       if(side_LENDA[(*chan_LENDA)[i]]==0){
-        cout << __LINE__ << endl;
         LENDAHit.energy_T.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_T.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_T.push_back((*time_LENDA)[i]);
       }
       else if(side_LENDA[(*chan_LENDA)[i]]==1){
-        cout << __LINE__ << endl;
         LENDAHit.energy_B.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_B.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_B.push_back((*time_LENDA)[i]);
       }
     }
-    cout << __LINE__ << endl;
     if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_B.size()>0){
       for(int i=0; i<LENDAHit.pmt_T.size(); i++){
         for(int j=0; j<LENDAHit.pmt_B.size(); j++){
@@ -45,8 +39,6 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
         }
       }
     }
-    cout << __LINE__ << endl;
   }
-  cout << "out" << endl;
   return LENDAHit;
 }
