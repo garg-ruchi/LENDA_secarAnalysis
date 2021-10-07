@@ -6,7 +6,7 @@ struct lendaDTO{
   vector<double> time_T, time_B;
   vector<int> barGood;
   vector<double> energyGood;
-  vector<int> timeGood;
+  vector<double> timeGood;
 };
 
 //chan_LENDA comes from the createEvent and ranges from 0 to 41 ???
