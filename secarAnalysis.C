@@ -371,7 +371,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP->Write("MCP",TObject::kSingleKey);
   IC_Si->Write("IC_Si",TObject::kSingleKey);
   MCP_Si->Write("MCP_Si",TObject::kSingleKey);
-  LENDA_Si->Write("LENDA_Si",TObject::kSingleKey)
+  LENDA_Si->Write("LENDA_Si",TObject::kSingleKey);
   RFQ_Si->Write("RFQ_Si",TObject::kSingleKey);
   MCP_IC_Si->Write("MCP_IC_Si",TObject::kSingleKey);
   cuts->Write("cuts",TObject::kSingleKey);
