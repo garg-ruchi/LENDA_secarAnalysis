@@ -32,6 +32,8 @@ public :
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
    // Declaration of leaf types
+   vector<double> *time_RFQ_JENSA;
+
    vector<int>     *energy_Pulser_JENSA;
    vector<double>  *time_Pulser_JENSA;
 
@@ -71,6 +73,8 @@ public :
    Double_t        trigger;
 
    // List of branches
+   TBranch        *b_time_RFQ_JENSA;
+
    TBranch        *b_energy_Pulser_JENSA;   //!
    TBranch        *b_time_Pulser_JENSA;   //!
 
@@ -167,6 +171,8 @@ void secarAnalysis::Init(TTree *tree)
    // (once per file to be processed).
 
    // Set object pointer
+   time_RFQ_JENSA = 0;
+
    energy_Pulser_JENSA = 0;
    time_Pulser_JENSA = 0;
 
@@ -201,6 +207,8 @@ void secarAnalysis::Init(TTree *tree)
    fChain = tree;
    fCurrent = -1;
    fChain->SetMakeClass(1);
+
+   fChain->SetBranchAddress("time_RFQ_JENSA", &time_RFQ_JENSA, &b_time_RFQ_JENSA);
 
    fChain->SetBranchAddress("energy_Pulser_JENSA", &energy_Pulser_JENSA, &b_energy_Pulser_JENSA);
    fChain->SetBranchAddress("time_Pulser_JENSA", &time_Pulser_JENSA, &b_time_Pulser_JENSA);
