@@ -77,13 +77,13 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   LENDA->Add(h_m_LENDA_T);
   TH1D *h_e_LENDA_T = new TH1D("h_e_LENDA_T","Energy LENDA top pmt",4000,0,200000);
   LENDA->Add(h_e_LENDA_T);
-  TH1D *h_t_LENDA_T = new TH1D("h_t_LENDA_T","Timing LENDA top pmt",4000,0,2E11);
+  TH1D *h_t_LENDA_T = new TH1D("h_t_LENDA_T","Timing LENDA top pmt",4000,-2e11,2E11);
   LENDA->Add(h_t_LENDA_T);
   TH1D *h_m_LENDA_B = new TH1D("h_m_LENDA_B","LENDA bottom multiplicity",21,0,21);
   LENDA->Add(h_m_LENDA_B);
   TH1D *h_e_LENDA_B = new TH1D("h_e_LENDA_B","Energy LENDA bottom",4000,0,200000);
   LENDA->Add(h_e_LENDA_B);
-  TH1D *h_t_LENDA_B = new TH1D("h_t_LENDA_B","Timing LENDA bottom pmt",4000,0,2E11);
+  TH1D *h_t_LENDA_B = new TH1D("h_t_LENDA_B","Timing LENDA bottom pmt",4000,-2e11,2E11);
   LENDA->Add(h_t_LENDA_B);
   TH1D *h_e_LENDA_ave = new TH1D("h_e_LENDA_ave","Average Energy LENDA bar",4000,0,200000);
   LENDA->Add(h_e_LENDA_ave);
@@ -274,6 +274,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   	}
     for(int i=0; i<LENDAHit.energyGood.size(); i++){
       h_e_LENDA_ave->Fill(LENDAHit.energyGood[i]);
+      h_eb_LENDA->Fill(LENDAHit.energyGood[i],LENDAHit.barGood[i]);
     }
   }
 
@@ -341,6 +342,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         if(LENDAHit.barGood.size()>0){
           for(int j=0; j<LENDAHit.barGood.size(); j++){
             h_et_LENDA_Si->Fill(SiHit.energyCal_F[i], SiHit.time_F[i]-LENDAHit.timeGood[j]);
+            cout << "works " << endl;
           }
         }
       }
