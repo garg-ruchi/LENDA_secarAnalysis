@@ -137,6 +137,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_Si->Add(h_t_MCP_Si);
   TH2D *h_et_MCP_Si = new TH2D("h_et_MCP_Si","time difference between MCPs and Si vs Si energy",4000,0,200000,250,0,1000);
   MCP_Si->Add(h_et_MCP_Si);
+  TH2D *h_ct_MCP_Si = new TH2D("h_ct_MCP_Si","Si strip F vs time difference between MCPs and Si",4000,0,200000,250,0,1000);
+  MCP_Si->Add(h_ct_MCP_Si);
 
   // LENDA - Si conincidence histograms
   TList *LENDA_Si = new TList();
@@ -336,6 +338,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
           for(int j=0; j<mcpHit.time.size(); j++){
             h_t_MCP_Si->Fill(SiHit.time_F[i]-mcpHit.time[j]);
             h_et_MCP_Si->Fill(SiHit.energyCal_F[i], SiHit.time_F[i]-mcpHit.time[j]);
+            h_ct_MCP_Si->Fill(SiHit.time_F[i]-mcpHit.time[j],SiHit.strip_F[i]);
           }
         }
   //==========Si LENDA coincidence==========//
