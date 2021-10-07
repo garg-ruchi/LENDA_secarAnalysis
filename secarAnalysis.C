@@ -96,9 +96,9 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   TList *IC = new TList();
   TH1D *h_m_IC_dE = new TH1D("h_m_IC_dE","IC_dE multiplicity",20,0,20);
   IC->Add(h_m_IC_dE);
-  TH1D *h_e_IC_dE = new TH1D("h_e_IC_dE","calibrated IC dE",4000,0,200000);
+  TH1D *h_e_IC_dE = new TH1D("h_e_IC_dE","calibrated IC dE",2000,0,100);
   IC->Add(h_e_IC_dE);
-  TH2D *h_em_IC_dE = new TH2D("h_em_IC_dE","multiplicity vs calibrated IC dE",4000,0,200000,10,0,10);
+  TH2D *h_em_IC_dE = new TH2D("h_em_IC_dE","multiplicity vs calibrated IC dE",2000,0,100,10,0,10);
   IC->Add(h_em_IC_dE);
 
   // MCP histograms
@@ -108,15 +108,15 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 
   // Si - IC conincidence histograms
   TList *IC_Si = new TList();
-  TH2D *h_pid = new TH2D("h_pid","IC_dE vs Si",4000,0,200000,4000,0,200000);//4500,0,4500,3500,0,3500);
+  TH2D *h_pid = new TH2D("h_pid","IC_dE vs Si",4000,0,200000,2000,0,100);//4500,0,4500,3500,0,3500);
   IC_Si->Add(h_pid);
-  TH2D *h_pid_corr = new TH2D("h_pid_corr","IC_dE vs Si, edge effect corrected",4000,0,200000,4000,0,200000);//4500,0,4500,3500,0,3500);
+  TH2D *h_pid_corr = new TH2D("h_pid_corr","IC_dE vs Si, edge effect corrected",4000,0,200000,2000,0,100);//4500,0,4500,3500,0,3500);
   IC_Si->Add(h_pid_corr);
-  TH2D *h_pid_cen = new TH2D("h_pid_cen","IC_dE vs Si center",4000,0,200000,4000,0,200000);//4500,0,4500,3500,0,3500);
+  TH2D *h_pid_cen = new TH2D("h_pid_cen","IC_dE vs Si center",4000,0,200000,2000,0,100);//4500,0,4500,3500,0,3500);
   IC_Si->Add(h_pid_cen);
-  TH2D *h_pid_edg = new TH2D("h_pid_edg","IC_dE vs Si edge",4000,0,200000,4000,0,200000);//4500,0,4500,3500,0,3500);
+  TH2D *h_pid_edg = new TH2D("h_pid_edg","IC_dE vs Si edge",4000,0,200000,2000,0,100);//4500,0,4500,3500,0,3500);
   IC_Si->Add(h_pid_edg);
-  TH2D *h_pid_edg_corr = new TH2D("h_pid_edg_corr","IC_dE vs Si edge (energy corrected)",4000,0,200000,4000,0,200000);//4500,0,4500,3500,0,3500);
+  TH2D *h_pid_edg_corr = new TH2D("h_pid_edg_corr","IC_dE vs Si edge (energy corrected)",4000,0,200000,2000,0,100);//4500,0,4500,3500,0,3500);
   IC_Si->Add(h_pid_edg_corr);
   TH1D *h_e_Si_coin_dE = new TH1D("h_e_Si_coin_dE","Si energy with dE>0",4000,0,200000);
   IC_Si->Add(h_e_Si_coin_dE);
@@ -151,11 +151,11 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_IC_Si->Add(h_t_MCP_Si2);
   TH1D *h_t_MCP_Si3 = new TH1D("h_t_MCP_Si3","time difference between MCPs and Si gated on dE>0",1000,0,4000);
   MCP_IC_Si->Add(h_t_MCP_Si3);
-  TH2D *h_pid_MCP = new TH2D("h_pid_MCP","pid with MCP signal",4000,0,200000,4000,0,200000);
+  TH2D *h_pid_MCP = new TH2D("h_pid_MCP","pid with MCP signal",4000,0,200000,2000,0,100);
   MCP_IC_Si->Add(h_pid_MCP);
-  TH2D *h_ICdE_SiMCPtime = new TH2D("h_ICdE_SiMCPtime","MCP-Si time vs IC_dE energy",4000,0,200000,250,0,1000);
+  TH2D *h_ICdE_SiMCPtime = new TH2D("h_ICdE_SiMCPtime","MCP-Si time vs IC_dE energy",2000,0,100,250,0,1000);
   MCP_IC_Si->Add(h_ICdE_SiMCPtime);
-  TH2D *h_ICdE_SiMCPtime_SiEGate = new TH2D("h_ICdE_SiMCPtime_SiEGate","MCP-Si time vs IC_dE energy with Si E > 25000",4000,0,200000,250,0,1000);
+  TH2D *h_ICdE_SiMCPtime_SiEGate = new TH2D("h_ICdE_SiMCPtime_SiEGate","MCP-Si time vs IC_dE energy with Si E > 25000",2000,0,100,250,0,1000);
   MCP_IC_Si->Add(h_ICdE_SiMCPtime_SiEGate);
 //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-//
 
