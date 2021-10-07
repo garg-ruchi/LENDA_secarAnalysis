@@ -21,6 +21,7 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
         LENDAHit.pmt_T.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_T.push_back((*time_LENDA)[i]);
       }
+      cout << __LINE__ << endl;
       else if(side_LENDA[(*chan_LENDA)[i]]==1){
         LENDAHit.energy_B.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_B.push_back(bar_LENDA[(*chan_LENDA)[i]]);
