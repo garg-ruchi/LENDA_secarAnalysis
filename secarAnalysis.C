@@ -220,7 +220,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
     mcpHit = sortMCPHits(mult_UMCP_t, time_UMCP_t);
     icHit = sortICHits(mult_IC_dE, energy_IC_dE, time_IC_dE, IC_dE_gain, IC_dE_offset);
     SiHit = sortSiHits(mult_Si, energy_Si, chan_Si, time_Si, Si_side, Si_strip, Si_gain, Si_offset, 2500);
-    //LENDAHit = sortLENDAHits(mult_LENDA, energy_LENDA, chan_LENDA, time_LENDA, side_LENDA, bar_LENDA);
+    LENDAHit = sortLENDAHits(mult_LENDA, energy_LENDA, chan_LENDA, time_LENDA, side_LENDA, bar_LENDA);
 
 //=========Multiplicity histograms=========//
     h_m_SiF->Fill(SiHit.strip_F.size());
