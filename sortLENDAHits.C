@@ -16,7 +16,8 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
   cout << __LINE__ << endl;
   if(mult_LENDA>1 && mult_LENDA<42){
     cout << "here" << endl;
-    cout << mult_LENDA << "\t" << (*energy_LENDA)[0] << endl;
+    cout << mult_LENDA << endl;
+    cout << (*energy_LENDA)[0] << endl;
     cout << __LINE__ << endl;
     for(int i=0; i<mult_LENDA; i++){
       if(side_LENDA[(*chan_LENDA)[i]]==0){
