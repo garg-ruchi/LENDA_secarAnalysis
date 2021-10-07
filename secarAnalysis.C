@@ -356,7 +356,9 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         }
   //==========Si RFQ coincidence==========//
         if((*time_RFQ_JENSA).size()>0){
-          cout << "works" << endl;
+          for(int j=0; j<(*time_RFQ_JENSA).size(); j++){
+            h_t_RFQ_Si->Fill(SiHit.time_F[i]-(*time_RFQ_JENSA)[j]);
+          }
         }
       }
     }
@@ -369,7 +371,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP->Write("MCP",TObject::kSingleKey);
   IC_Si->Write("IC_Si",TObject::kSingleKey);
   MCP_Si->Write("MCP_Si",TObject::kSingleKey);
-  LENDA_Si->Write("LENDA_Si",TObject::kSingleKey);
+  LENDA_Si->Write("LENDA_Si",TObject::kSingleKey)
+  RFQ_Si->Write("RFQ_Si",TObject::kSingleKey);
   MCP_IC_Si->Write("MCP_IC_Si",TObject::kSingleKey);
   cuts->Write("cuts",TObject::kSingleKey);
 
@@ -382,6 +385,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   IC_Si->Delete();
   MCP_Si->Delete();
   LENDA_Si->Delete();
+  RFQ_Si->Delete();
   MCP_IC_Si->Delete();
   cuts->Delete();
 
