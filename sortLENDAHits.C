@@ -11,6 +11,7 @@ struct lendaDTO{
 
 //chan_LENDA comes from the createEvent and ranges from 0 to 41 ???
 lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *chan_LENDA, vector<double> *time_LENDA, int side_LENDA[42], int bar_LENDA[42]){
+  cout << "In" << endl;
   lendaDTO LENDAHit;
   if(mult_LENDA>1 && mult_LENDA<42){
     for(int i=0; i<mult_LENDA; i++){
@@ -37,5 +38,6 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
       }
     }
   }
+  cout << "out" << endl;
   return LENDAHit;
 }
