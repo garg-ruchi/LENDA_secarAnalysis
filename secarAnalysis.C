@@ -220,7 +220,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
     mcpHit = sortMCPHits(mult_UMCP_t, time_UMCP_t);
     icHit = sortICHits(mult_IC_dE, energy_IC_dE, time_IC_dE, IC_dE_gain, IC_dE_offset);
     SiHit = sortSiHits(mult_Si, energy_Si, chan_Si, time_Si, Si_side, Si_strip, Si_gain, Si_offset, 2500);
-    //LENDAHit = sortLENDAHits(mult_LENDA, energy_LENDA, chan_LENDA, time_LENDA, side_LENDA, bar_LENDA);
+    LENDAHit = sortLENDAHits(mult_LENDA, energy_LENDA, chan_LENDA, time_LENDA, side_LENDA, bar_LENDA);
 
 //=========Multiplicity histograms=========//
     h_m_SiF->Fill(SiHit.strip_F.size());
@@ -254,29 +254,29 @@ void secarAnalysis::Loop(TString fileOutName, int run)
     }
 
 //=============LENDA histograms===============//
-  if(mult_LENDA>1 && mult_LENDA<42){
-  	if(LENDAHit.pmt_T.size()>0){
-  		for(int i=0; i<LENDAHit.pmt_T.size(); i++){
-        h_e_LENDA_T->Fill(LENDAHit.energy_T[i]);
-        h_t_LENDA_T->Fill(LENDAHit.time_T[i]);
-  		}
-  	}
-  	if(LENDAHit.pmt_B.size()>0){
-  		for(int i=0; i<LENDAHit.pmt_B.size(); i++){
-        h_e_LENDA_B->Fill(LENDAHit.energy_B[i]);
-        h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
-  			if(LENDAHit.pmt_T.size()>0){
-  				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
-            if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i] && LENDAHit.energy_T[j]>0 && LENDAHit.energy_B[i]>0) h_t_LENDA_diff->Fill(LENDAHit.time_T[j]-LENDAHit.time_B[i]);
-  				}
-  			}
-  		}
-  	}
-    for(int i=0; i<LENDAHit.energyGood.size(); i++){
-      h_e_LENDA_ave->Fill(LENDAHit.energyGood[i]);
-      h_eb_LENDA->Fill(LENDAHit.energyGood[i],LENDAHit.barGood[i]);
-    }
-  }
+  // if(mult_LENDA>1 && mult_LENDA<42){
+  // 	if(LENDAHit.pmt_T.size()>0){
+  // 		for(int i=0; i<LENDAHit.pmt_T.size(); i++){
+  //       h_e_LENDA_T->Fill(LENDAHit.energy_T[i]);
+  //       h_t_LENDA_T->Fill(LENDAHit.time_T[i]);
+  // 		}
+  // 	}
+  // 	if(LENDAHit.pmt_B.size()>0){
+  // 		for(int i=0; i<LENDAHit.pmt_B.size(); i++){
+  //       h_e_LENDA_B->Fill(LENDAHit.energy_B[i]);
+  //       h_t_LENDA_B->Fill(LENDAHit.time_B[i]);
+  // 			if(LENDAHit.pmt_T.size()>0){
+  // 				for(int j=0; j<LENDAHit.pmt_T.size(); j++){
+  //           if(LENDAHit.pmt_T[j]==LENDAHit.pmt_B[i] && LENDAHit.energy_T[j]>0 && LENDAHit.energy_B[i]>0) h_t_LENDA_diff->Fill(LENDAHit.time_T[j]-LENDAHit.time_B[i]);
+  // 				}
+  // 			}
+  // 		}
+  // 	}
+  //   for(int i=0; i<LENDAHit.energyGood.size(); i++){
+  //     h_e_LENDA_ave->Fill(LENDAHit.energyGood[i]);
+  //     h_eb_LENDA->Fill(LENDAHit.energyGood[i],LENDAHit.barGood[i]);
+  //   }
+  // }
 
 //=============IC histograms===============//
     if(mult_IC_dE>0 && mult_IC_dE<28){
