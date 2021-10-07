@@ -15,14 +15,17 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
   lendaDTO LENDAHit;
   cout << __LINE__ << endl;
   if(mult_LENDA>1 && mult_LENDA<42){
+    cout << __LINE__ << endl;
     for(int i=0; i<mult_LENDA; i++){
+      cout << __LINE__ << endl;
       if(side_LENDA[(*chan_LENDA)[i]]==0){
+        cout << __LINE__ << endl;
         LENDAHit.energy_T.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_T.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_T.push_back((*time_LENDA)[i]);
       }
-      cout << __LINE__ << endl;
       else if(side_LENDA[(*chan_LENDA)[i]]==1){
+        cout << __LINE__ << endl;
         LENDAHit.energy_B.push_back((*energy_LENDA)[i]);
         LENDAHit.pmt_B.push_back(bar_LENDA[(*chan_LENDA)[i]]);
         LENDAHit.time_B.push_back((*time_LENDA)[i]);
