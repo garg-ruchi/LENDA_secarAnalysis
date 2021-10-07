@@ -145,6 +145,10 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   TH2D *h_et_LENDA_Si = new TH2D("h_et_LENDA_Si","time difference between LENDA and Si vs Si energy",2000,-10000,10000, 4000,0,200000);
   LENDA_Si->Add(h_et_LENDA_Si);
 
+  //RFQ - Si coincidence Histograms
+  TList *RFQ_Si = new TList();
+  TH1D *h_t_RFQ_Si = new TH1D("h_t_RFQ_Si","time difference between Si front and RFQ",10000,0,10000);
+
   // MCP - IC - Si coincidence histograms
   TList *MCP_IC_Si = new TList();
   TH1D *h_t_MCP_Si1 = new TH1D("h_t_MCP_Si1","time difference between MCPs and Si gated on blob1 recoils",1000,0,4000);
@@ -349,6 +353,10 @@ void secarAnalysis::Loop(TString fileOutName, int run)
           for(int j=0; j<LENDAHit.barGood.size(); j++){
             h_et_LENDA_Si->Fill(abs(SiHit.time_F[i]-LENDAHit.timeGood[j]), SiHit.energyCal_F[i]);
           }
+        }
+  //==========Si RFQ coincidence==========//
+        if((*time_RFQ_JENSA).size()>0){
+          cout << "works" << endl;
         }
       }
     }
