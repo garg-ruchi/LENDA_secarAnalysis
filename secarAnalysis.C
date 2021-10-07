@@ -164,8 +164,10 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_IC_Si->Add(h_ICdE_SiMCPtime);
   TH2D *h_ICdE_SiMCPtime_SiEGate = new TH2D("h_ICdE_SiMCPtime_SiEGate","MCP-Si time vs IC_dE energy with Si E > 25000",2000,0,100,250,0,1000);
   MCP_IC_Si->Add(h_ICdE_SiMCPtime_SiEGate);
-  TH2D *h_ct_MCP_IC_Si = new TH2D("h_ct_MCP_IC_Si","Si strip F vs time difference between MCPs and Si",250,0,1000,32,0,32);
-  MCP_IC_Si->Add(h_ct_MCP_IC_Si);
+  TH2D *h_ct_MCP_IC_Si1a = new TH2D("h_ct_MCP_IC_Si1a","Si strip F vs time difference between MCPs and Si blob1a",250,0,1000,32,0,32);
+  MCP_IC_Si->Add(h_ct_MCP_IC_Si1a);
+  TH2D *h_ct_MCP_IC_Si1b = new TH2D("h_ct_MCP_IC_Si1b","Si strip F vs time difference between MCPs and Si blob1b",250,0,1000,32,0,32);
+  MCP_IC_Si->Add(h_ct_MCP_IC_Si1b);
 //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-//
 
 //=====================================================================//
@@ -336,7 +338,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
                 h_pid_MCP->Fill(SiHit.energyCal_F[i],icHit.energyCal[j]);
                 h_ICdE_SiMCPtime->Fill(icHit.energyCal[j],SiHit.time_F[i]-mcpHit.time[k]);
 		            if(SiHit.energyCal_F[i]>blob1a_Si[0]) h_ICdE_SiMCPtime_SiEGate->Fill(icHit.energyCal[j],SiHit.time_F[i]-mcpHit.time[k]);
-                if(pid_blob1a) h_ct_MCP_IC_Si->Fill(SiHit.time_F[i]-mcpHit.time[k],SiHit.strip_F[i]);
+                if(pid_blob1a) h_ct_MCP_IC_Si1a->Fill(SiHit.time_F[i]-mcpHit.time[k],SiHit.strip_F[i]);
+                if(pid_blob1b) h_ct_MCP_IC_Si1b->Fill(SiHit.time_F[i]-mcpHit.time[k],SiHit.strip_F[i]);
               }
             }
           }
