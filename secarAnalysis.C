@@ -173,10 +173,10 @@ void secarAnalysis::Loop(TString fileOutName, int run)
 //=====================================================================//
 
   // Upper and lower limits on Si and IC_dE energies for pid blobs
-  int blob1a_Si[2], blob1a_dE[2], blob1b_Si[2], blob1b_dE[2], blob2_Si[2], blob2_dE[2];
-  int BGO_Si_time[2], MCP_Si_time[2];
+  dounle blob1a_Si[2], blob1a_dE[2], blob1b_Si[2], blob1b_dE[2], blob2_Si[2], blob2_dE[2];
+  double BGO_Si_time[2], MCP_Si_time[2];
   ifstream f_limits("limits.dat");
-  int temp[17];
+  double temp[17];
   while(!f_limits.eof()){
     f_limits >> temp[0] >> temp[1] >> temp[2] >> temp[3] >> temp[4] >> temp[5] >> temp[6] >> temp[7] >> temp[8] >> temp[9] >> temp[10] >> temp[11] >> temp[12] >> temp[13] >> temp[14] >> temp[15] >> temp[16];
     if(temp[0]==run){
