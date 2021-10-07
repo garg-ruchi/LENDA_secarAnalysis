@@ -13,6 +13,7 @@ struct lendaDTO{
 lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *chan_LENDA, vector<double> *time_LENDA, int side_LENDA[42], int bar_LENDA[42]){
   cout << "In" << endl;
   lendaDTO LENDAHit;
+  cout << __LINE__ << endl;
   if(mult_LENDA>1 && mult_LENDA<42){
     for(int i=0; i<mult_LENDA; i++){
       if(side_LENDA[(*chan_LENDA)[i]]==0){
@@ -26,6 +27,7 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
         LENDAHit.time_B.push_back((*time_LENDA)[i]);
       }
     }
+    cout << __LINE__ << endl;
     if(LENDAHit.pmt_T.size()>0 && LENDAHit.pmt_B.size()>0){
       for(int i=0; i<LENDAHit.pmt_T.size(); i++){
         for(int j=0; j<LENDAHit.pmt_B.size(); j++){
@@ -37,6 +39,7 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
         }
       }
     }
+    cout << __LINE__ << endl;
   }
   cout << "out" << endl;
   return LENDAHit;
