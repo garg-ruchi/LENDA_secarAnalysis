@@ -148,6 +148,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   //RFQ - Si coincidence Histograms
   TList *RFQ_Si = new TList();
   TH1D *h_t_RFQ_Si = new TH1D("h_t_RFQ_Si","time difference between Si front and RFQ",10000,0,10000);
+  RFQ_Si->Add(h_t_RFQ_Si);
 
   // MCP - IC - Si coincidence histograms
   TList *MCP_IC_Si = new TList();
