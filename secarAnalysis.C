@@ -342,7 +342,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         if(LENDAHit.barGood.size()>0){
           for(int j=0; j<LENDAHit.barGood.size(); j++){
             h_et_LENDA_Si->Fill(SiHit.energyCal_F[i], SiHit.time_F[i]-LENDAHit.timeGood[j]);
-            cout << "works " << endl;
+            cout << SiHit.energyCal_F[i] << "\t" << SiHit.time_F[i]-LENDAHit.timeGood[j] << endl;
           }
         }
       }
