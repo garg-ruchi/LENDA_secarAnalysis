@@ -32,7 +32,7 @@ lendaDTO sortLENDAHits(int mult_LENDA, vector<int> *energy_LENDA, vector<int> *c
             LENDAHit.barGood.push_back(LENDAHit.pmt_T[i]);
             LENDAHit.energyGood.push_back(sqrt(LENDAHit.energy_T[i]*LENDAHit.energy_B[j]));
             LENDAHit.timeGood.push_back((LENDAHit.time_T[i]+LENDAHit.time_B[j])/2);
-            cout << LENDAHit.time_T[i] << "\t" << LENDAHit.time_B[j] << endl;
+            cout << (LENDAHit.time_T[i] + LENDAHit.time_B[j])/2 << endl;
           }
         }
       }
