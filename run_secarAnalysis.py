@@ -19,13 +19,15 @@ for i in range(len(argv)):
 x = 'y'
 
 for i in runlist:
-    fileInName = addressIn + 'run0' + str(i) + '-00_10us.root'
-    fileOutName = addressOut + 'single_0' + str(i) + '.root'
-    print('Input file : ' + fileInName)
-    if( (not path.exists(fileOutName)) or x=='y'):
-        command = 'root -l -q \"run_secarAnalysis.C(\\"{}\\",\\"{}\\",{})\"'.format(fileInName,fileOutName,i)
-        os.system(command)
-        print('Created output file : ' + fileOutName + '\n')
-    else:
-        print('Outfile: ' + fileOutName + ' already exists!' + '\n')
+    for j in range(0,4):
+        suffix = '-0' + str(j) + '_10us.root'
+        fileInName = addressIn + 'run0' + str(i) + suffix
+        fileOutName = addressOut + 'single_0' + str(i) + '.root'
+        print('Input file : ' + fileInName)
+        if( (not path.exists(fileOutName)) or x=='y'):
+            command = 'root -l -q \"run_secarAnalysis.C(\\"{}\\",\\"{}\\",{})\"'.format(fileInName,fileOutName,i)
+            os.system(command)
+            print('Created output file : ' + fileOutName + '\n')
+        else:
+            print('Outfile: ' + fileOutName + ' already exists!' + '\n')
 print('Processing finished.')
