@@ -355,7 +355,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   //==========Si LENDA coincidence==========//
         if(LENDAHit.barGood.size()>0){
           for(int j=0; j<LENDAHit.barGood.size(); j++){
-            h_et_LENDA_Si->Fill(abs(SiHit.time_F[i]-LENDAHit.timeGood[j]), SiHit.energyCal_F[i]);
+            h_et_LENDA_Si->Fill((SiHit.time_F[i]-LENDAHit.timeGood[j]), SiHit.energyCal_F[i]);
           }
         }
   //==========Si RFQ coincidence==========//
