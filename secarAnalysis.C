@@ -145,6 +145,11 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   TH2D *h_et_LENDA_Si = new TH2D("h_et_LENDA_Si","time difference between LENDA and Si vs Si energy",2000,-10000,10000, 4000,0,200000);
   LENDA_Si->Add(h_et_LENDA_Si);
 
+  // LENDA - IC - Si conincidence histograms
+  TList *LENDA_IC_Si = new TList();
+  TH2D *h_et_LENDA_IC_Si = new TH2D("h_et_LENDA_IC_Si","time difference between LENDA and Si vs Si energy gated on blob1a",200,-10000,10000, 4000,0,200000);
+  LENDA_IC_Si->Add(h_et_LENDA_IC_Si);
+
   //RFQ - Si coincidence Histograms
   TList *RFQ_Si = new TList();
   TH1D *h_t_RFQ_Si = new TH1D("h_t_RFQ_Si","time difference between Si front and RFQ",10000,0,10000);
@@ -342,6 +347,13 @@ void secarAnalysis::Loop(TString fileOutName, int run)
                 if(pid_blob1b) h_ct_MCP_IC_Si1b->Fill(SiHit.time_F[i]-mcpHit.time[k],SiHit.strip_F[i]);
               }
             }
+
+    //==========Si IC LENDA coincidence==========//
+            if(LENDAHit.timeGood.size()>0){
+              for(int k=0; k<LENDAHit.timeGood.size(); k++){
+                if(pid_blob1a) h_et_LENDA_IC_Si->Fill((SiHit.time_F[i]-LENDAHit.timeGood[k]), SiHit.energyCal_F[i]);
+              }
+            }
           }
         }
   //==========Si MCP coincidence==========//
@@ -377,6 +389,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_Si->Write("MCP_Si",TObject::kSingleKey);
   LENDA_Si->Write("LENDA_Si",TObject::kSingleKey);
   RFQ_Si->Write("RFQ_Si",TObject::kSingleKey);
+  LENDA_IC_Si->Write("LENDA_Si",TObject::kSingleKey);
   MCP_IC_Si->Write("MCP_IC_Si",TObject::kSingleKey);
   cuts->Write("cuts",TObject::kSingleKey);
 
@@ -390,6 +403,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   MCP_Si->Delete();
   LENDA_Si->Delete();
   RFQ_Si->Delete();
+  LENDA_IC_Si->Delete();
   MCP_IC_Si->Delete();
   cuts->Delete();
 
