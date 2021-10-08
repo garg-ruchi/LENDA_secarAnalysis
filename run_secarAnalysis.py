@@ -22,7 +22,7 @@ for i in runlist:
     for j in range(0,4):
         suffix = '-0' + str(j) + '_10us.root'
         fileInName = addressIn + 'run0' + str(i) + suffix
-        fileOutName = addressOut + 'single_0' + str(i) + '.root'
+        fileOutName = addressOut + 'single_0' + str(i) + '-0' + str(j) + '.root'
         print('Input file : ' + fileInName)
         if( (not path.exists(fileOutName)) or x=='y'):
             command = 'root -l -q \"run_secarAnalysis.C(\\"{}\\",\\"{}\\",{})\"'.format(fileInName,fileOutName,i)
