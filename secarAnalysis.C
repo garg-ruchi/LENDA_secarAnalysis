@@ -332,7 +332,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
             //     else if(pid_blob1b) h_Si_hit1b->Fill(SiHit.strip_F[i],SiHit.strip_B[k]);
             //     else if(pid_blob2) h_Si_hit2->Fill(SiHit.strip_F[i],SiHit.strip_B[k]);
             //   }
-            }
+            // }
 
     //==========Si IC MCP coincidence==========//
             if(mcpHit.time.size()>0){
