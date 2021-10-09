@@ -159,8 +159,8 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   TList *LScin_Si = new TList();
   TH2D *h_et_LScin_Si = new TH2D("h_et_LScin_Si","time difference between LScin and Si vs Si energy",2000,-10000,10000, 4000,0,200000);
   LScin_Si->Add(h_et_LScin_Si);
-  TH2D *h_ct_LScin_Si = new TH2D("h_ct_LScin_Si","time difference between LScin and Si vs Si strip",2000,-10000,10000, 32,0,32);
-  LScin_Si->Add(h_ct_LScin_Si);
+  TH2D *h_ec_LScin_Si = new TH2D("h_ec_LScin_Si","Si strip vs Si energy",4000,0,200000,32,0,32);
+  LScin_Si->Add(h_ec_LScin_Si);
 
   // LENDA - IC - Si conincidence histograms
   TList *LENDA_IC_Si = new TList();
@@ -393,7 +393,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
         if(LScinHit.time.size()>0){
           for(int j=0; j<LScinHit.time.size(); j++){
             h_et_LScin_Si->Fill((SiHit.time_F[i]-LScinHit.time[j]), SiHit.energyCal_F[i]);
-            if((SiHit.time_F[i]-LScinHit.time[j])>1200 && (SiHit.time_F[i]-LScinHit.time[j])<1700) h_ct_LScin_Si->Fill((SiHit.time_F[i]-LScinHit.time[j]), SiHit.strip_F[i]);
+            if((SiHit.time_F[i]-LScinHit.time[j])>1200 && (SiHit.time_F[i]-LScinHit.time[j])<1700) h_ec_LScin_Si->Fill(SiHit.energyCal_F[i], SiHit.strip_F[i]);
           }
         }
   //==========Si RFQ coincidence==========//
