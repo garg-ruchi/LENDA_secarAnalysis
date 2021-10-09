@@ -18,7 +18,7 @@
 #include "sortICHits.C"
 #include "sortSiHits.C"
 #include "sortLENDAHits.C"
-#include "sortLSciHits.C"
+#include "sortLScintHits.C"
 
 // Header file for the classes stored in the TTree if any.
 #include "vector"
