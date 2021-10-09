@@ -36,7 +36,7 @@ void secarAnalysis::Loop(TString fileOutName, int run)
   icDTO icHit;
   SiDTO SiHit;
   lendaDTO LENDAHit;
-  lscintDTO LScinHit;
+  LScintDTO LScinHit;
 //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-//
 
 //=====================================================================//
